@@ -1,0 +1,235 @@
+/* ============================================================
+   SPOBU WEB — bendras stilius (landing: index / klubams / tevams)
+   Hibridas: šviesus puslapis + tamsūs appso UI fragmentai.
+   Tokens perkelti iš appso styles.css (#FF4D00, Bebas Neue, r18).
+   ============================================================ */
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  /* Brand (iš appso) */
+  --br:#FF4D00;--br2:#FF7A33;--gld:#FFD700;--grn:#22C55E;--blu:#3B82F6;
+  /* Šviesi paletė (web) */
+  --bg:#FAF8F5;--bg2:#FFFFFF;--ink:#1A1A1A;--ink2:#4A443D;--mut:#8A8178;
+  --bdr:rgba(26,26,26,.10);--bdr2:rgba(26,26,26,.06);
+  /* Tamsioji (produkto fragmentai — 1:1 iš appso) */
+  --d-bg:#0A0A0A;--d-card:#1A1A1A;--d-txt:#F5F2ED;--d-mut:#888;--d-bdr:rgba(255,255,255,.08);
+  --r:18px;--r-sm:12px;
+  --shadow:0 10px 40px rgba(26,26,26,.08);
+  --shadow-lg:0 24px 70px rgba(26,26,26,.14);
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:'Nunito',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+
+/* ---------- Tipografija ---------- */
+.h-display{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,7vw,72px);line-height:1.02;letter-spacing:2px;font-weight:400;}
+.h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:2px;font-weight:400;}
+.h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,4vw,36px);line-height:1.1;letter-spacing:1.5px;font-weight:400;}
+.h3{font-size:19px;font-weight:900;line-height:1.3;}
+.lead{font-size:18px;color:var(--ink2);line-height:1.6;}
+.small{font-size:14px;color:var(--mut);}
+.kicker{font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--br);}
+.accent{color:var(--br);}
+.num{font-family:'Bebas Neue',sans-serif;letter-spacing:1px;}
+
+/* ---------- Layout ---------- */
+.wrap{width:min(1100px,100%);margin:0 auto;padding:0 20px;}
+.sec{padding:72px 0;}
+.sec-alt{background:var(--bg2);}
+.sec-head{max-width:640px;margin-bottom:40px;}
+.sec-head .h2{margin:10px 0 12px;}
+
+/* ---------- Logo (SPOBU) ---------- */
+.logo{display:inline-flex;align-items:center;gap:10px;font-family:'Bebas Neue',sans-serif;letter-spacing:4px;font-size:22px;color:var(--ink);text-decoration:none;line-height:1;}
+.logo-ico{width:34px;height:34px;display:block;color:var(--br);}
+.logo.logo-lg{font-size:30px;gap:12px;}
+.logo.logo-lg .logo-ico{width:46px;height:46px;}
+.footer .logo .logo-ico{color:#fff;}
+.tagline{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--br);}
+
+/* ---------- Nav ---------- */
+.nav{position:sticky;top:0;z-index:100;background:rgba(250,248,245,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr2);}
+.nav-in{display:flex;align-items:center;gap:26px;height:64px;}
+.nav-links{display:flex;gap:22px;margin-left:auto;align-items:center;}
+.nav a.nl{color:var(--ink2);text-decoration:none;font-size:14px;font-weight:800;}
+.nav a.nl:hover{color:var(--br);}
+
+/* ---------- Mygtukai ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:99px;padding:14px 26px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:900;cursor:pointer;text-decoration:none;border:2px solid transparent;transition:transform .15s ease,background .2s,border-color .2s,color .2s;line-height:1.2;}
+.btn:active{transform:scale(.97);}
+.btn:focus-visible{outline:3px solid var(--br2);outline-offset:2px;}
+.btn-primary{background:var(--br);color:#fff;}
+.btn-primary:hover{background:#E03800;}
+.btn-outline{background:transparent;color:var(--ink);border-color:var(--ink);}
+.btn-outline:hover{border-color:var(--br);color:var(--br);}
+.btn-ghost{background:none;border:none;color:var(--br);font-weight:800;font-size:14px;cursor:pointer;padding:6px 4px;text-decoration:none;}
+.btn-ghost:hover{text-decoration:underline;}
+.btn-lg{padding:17px 34px;font-size:16px;}
+.btn-sm{padding:9px 18px;font-size:13px;}
+
+/* ---------- Badge'ai ---------- */
+.badge{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:5px 14px;font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;}
+.badge-live{background:rgba(34,197,94,.12);color:#15803D;border:1px solid rgba(34,197,94,.35);}
+.badge-soon{background:rgba(255,77,0,.08);color:var(--br);border:1px dashed rgba(255,77,0,.45);}
+.badge-trust{background:var(--bg2);border:1px solid var(--bdr);color:var(--ink2);font-size:13px;text-transform:none;letter-spacing:0;padding:9px 16px;box-shadow:var(--shadow);}
+
+/* Trust juosta */
+.trust-row{display:flex;flex-wrap:wrap;gap:12px;}
+
+/* ---------- Kortelės (šviesios / bento) ---------- */
+.card{background:var(--bg2);border:1px solid var(--bdr2);border-radius:var(--r);padding:26px;box-shadow:var(--shadow);}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
+.bento .card{display:flex;flex-direction:column;gap:12px;}
+.b-2{grid-column:span 2;}
+.b-3{grid-column:span 3;}
+.b-4{grid-column:span 4;}
+.b-6{grid-column:span 6;}
+.card .h3{display:flex;align-items:center;gap:10px;}
+.card-ico{width:42px;height:42px;border-radius:var(--r-sm);background:rgba(255,77,0,.09);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+
+/* Kainų kortelė */
+.price-card{position:relative;display:flex;flex-direction:column;gap:10px;}
+.price{font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:1px;line-height:1;}
+.price em{font-style:normal;font-size:18px;color:var(--mut);}
+.price-feat{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--ink2);}
+.price-feat li::before{content:'✓';color:var(--grn);font-weight:900;margin-right:8px;}
+
+/* Skaičių juosta */
+.stats{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;}
+.stat{flex:1;min-width:130px;text-align:center;padding:22px 10px;background:var(--bg2);border:1px solid var(--bdr2);border-radius:var(--r);box-shadow:var(--shadow);}
+.stat .num{font-size:52px;color:var(--br);display:block;line-height:1;}
+.stat .lbl{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);margin-top:6px;display:block;}
+
+/* Žingsniai */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:step;}
+.step{position:relative;padding:26px;background:var(--bg2);border:1px solid var(--bdr2);border-radius:var(--r);box-shadow:var(--shadow);}
+.step::before{counter-increment:step;content:counter(step);font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--br);display:block;line-height:1;margin-bottom:10px;}
+
+/* ---------- TAMSŪS PRODUKTO FRAGMENTAI (1:1 appso stilius) ---------- */
+.dark{background:var(--d-bg);color:var(--d-txt);border-radius:var(--r);border:1px solid rgba(26,26,26,.9);box-shadow:var(--shadow-lg);overflow:hidden;}
+.d-card{background:var(--d-card);border:.5px solid var(--d-bdr);border-radius:16px;padding:16px;}
+.d-pad{padding:20px;}
+.d-mut{color:var(--d-mut);}
+.d-ttl{font-family:'Bebas Neue',sans-serif;letter-spacing:2px;font-size:18px;}
+
+/* Sporto kelio progreso juosta */
+.prog-row{display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:800;margin-bottom:7px;}
+.prog{height:12px;border-radius:99px;background:rgba(255,255,255,.09);overflow:hidden;}
+.prog-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--br),var(--br2));transition:width 1.2s cubic-bezier(.2,.8,.2,1);}
+.stage-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,77,0,.14);border:1px solid rgba(255,77,0,.35);color:var(--br2);border-radius:99px;padding:4px 12px;font-size:12px;font-weight:800;}
+
+/* Skill ženkliukas */
+.sk-badge{display:flex;align-items:center;gap:14px;}
+.sk-medal{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;background:radial-gradient(circle at 35% 30%,#FFE9A8,var(--gld) 70%);box-shadow:0 0 18px rgba(255,215,0,.35);flex-shrink:0;}
+.sk-tiers{display:flex;gap:5px;margin-top:6px;}
+.sk-tier{width:26px;height:5px;border-radius:99px;background:rgba(255,255,255,.14);}
+.sk-tier.on{background:var(--gld);}
+
+/* Streak */
+.streak{display:flex;align-items:center;gap:12px;}
+.streak-fire{font-size:34px;animation:breathe 2.4s ease-in-out infinite;filter:drop-shadow(0 0 10px rgba(255,122,51,.6));}
+.streak .num{font-size:34px;color:var(--br2);line-height:1;}
+
+/* EXP pop-up fragmentas */
+.exp-pop{position:relative;text-align:center;padding:26px 20px;}
+.exp-pop .num{font-size:56px;color:var(--gld);display:block;line-height:1;filter:drop-shadow(0 0 14px rgba(255,215,0,.45));}
+.exp-pop .who{font-size:13px;font-weight:800;color:var(--d-mut);margin-top:6px;}
+.conf{position:absolute;top:-4px;width:8px;height:8px;border-radius:2px;opacity:0;pointer-events:none;}
+.reveal.on .conf{animation:confDrop 1.6s ease-in forwards;}
+@keyframes confDrop{0%{transform:translateY(0) rotate(0);opacity:1;}100%{transform:translateY(150px) rotate(540deg);opacity:0;}}
+
+/* Patvirtinimo kortelė */
+.appr{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:800;}
+.appr .ok{width:34px;height:34px;border-radius:50%;background:rgba(34,197,94,.16);border:1px solid rgba(34,197,94,.4);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+
+/* Telefono rėmelis */
+.phone{width:min(320px,86vw);background:#0D0D0D;border-radius:44px;padding:11px;box-shadow:0 40px 80px rgba(26,26,26,.35),0 0 0 1px rgba(255,255,255,.06);margin:0 auto;}
+.phone-scr{background:var(--d-bg);border-radius:34px;overflow:hidden;min-height:420px;display:flex;flex-direction:column;gap:12px;padding:22px 16px;}
+.phone-notch{width:110px;height:22px;background:#0D0D0D;border-radius:0 0 14px 14px;margin:-22px auto 0;}
+.phone .logo{color:var(--d-txt);font-size:18px;justify-content:center;display:flex;}
+.phone .logo .logo-ico{width:26px;height:26px;}
+
+/* Promo video */
+.video-wrap{max-width:860px;margin:0 auto;}
+.video-wrap video{width:100%;display:block;border-radius:var(--r);box-shadow:var(--shadow-lg);background:#000;}
+
+/* ---------- Hero ---------- */
+.hero{padding:64px 0 76px;}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
+.hero .lead{margin-top:16px;max-width:520px;}
+
+/* Checklist (value props) */
+.check{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.check li{padding-left:30px;position:relative;color:var(--ink2);}
+.check li::before{content:'✓';position:absolute;left:0;top:0;width:21px;height:21px;border-radius:50%;background:rgba(34,197,94,.14);color:#15803D;font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center;}
+
+/* Numeruoti instrukcijų žingsniai (vertikalūs) */
+.howto{list-style:none;counter-reset:ht;display:flex;flex-direction:column;gap:14px;}
+.howto li{counter-increment:ht;position:relative;padding:20px 22px 20px 66px;background:var(--bg2);border:1px solid var(--bdr2);border-radius:var(--r);box-shadow:var(--shadow);}
+.howto li::before{content:counter(ht);position:absolute;left:20px;top:20px;width:32px;height:32px;border-radius:50%;background:var(--br);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:18px;display:flex;align-items:center;justify-content:center;}
+
+/* CTA juosta (uždaranti) */
+.band{background:linear-gradient(120deg,var(--br),var(--br2));border-radius:var(--r);padding:44px 36px;color:#fff;display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between;box-shadow:var(--shadow-lg);}
+.band .h2{color:#fff;}
+.btn-inverse{background:#fff;color:var(--br);}
+.btn-inverse:hover{background:#FFF1E8;}
+
+/* ---------- Forma ---------- */
+.form{display:flex;flex-direction:column;gap:4px;}
+.f-lbl{font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--ink2);margin:10px 0 5px;display:block;}
+.f-lbl .req{color:var(--br);}
+.inp{width:100%;border:1.5px solid var(--bdr);border-radius:var(--r-sm);padding:13px 15px;font-family:'Nunito',sans-serif;font-size:15px;color:var(--ink);background:var(--bg2);transition:border-color .2s;}
+.inp:focus{outline:none;border-color:var(--br);box-shadow:0 0 0 3px rgba(255,77,0,.12);}
+textarea.inp{resize:vertical;min-height:96px;}
+select.inp{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8178' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;}
+.msg{border-radius:var(--r-sm);padding:12px 16px;font-size:14px;font-weight:700;margin-top:12px;}
+.msg-ok{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.35);color:#15803D;}
+.msg-err{background:rgba(255,77,0,.08);border:1px solid rgba(255,77,0,.35);color:#C2410C;}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden;} /* honeypot */
+
+/* ---------- DUK ---------- */
+.faq{border:1px solid var(--bdr2);border-radius:var(--r-sm);background:var(--bg2);margin-bottom:10px;box-shadow:var(--shadow);}
+.faq summary{cursor:pointer;padding:16px 20px;font-weight:900;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:'+';font-size:22px;color:var(--br);font-weight:400;transition:transform .2s;}
+.faq[open] summary::after{transform:rotate(45deg);}
+.faq-body{padding:0 20px 18px;color:var(--ink2);font-size:15px;}
+
+/* ---------- Footer ---------- */
+.footer{background:var(--ink);color:#B8B2AA;padding:44px 0 30px;font-size:14px;}
+.footer .logo{color:#fff;}
+.footer a{color:#B8B2AA;text-decoration:none;}
+.footer a:hover{color:var(--br2);}
+.footer-in{display:flex;flex-wrap:wrap;gap:26px;align-items:center;justify-content:space-between;}
+
+/* ---------- Animacijos ---------- */
+@keyframes breathe{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+/* Progressive enhancement: slepiama TIK kai html.js (site.js prideda klasę) —
+   be JS visas turinys matomas iškart. */
+.reveal{transition:opacity .6s ease,transform .6s ease;}
+html.js .reveal{opacity:0;transform:translateY(22px);}
+html.js .reveal.on{opacity:1;transform:none;}
+.pop{transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .4s;}
+html.js .pop{transform:scale(.6);opacity:0;}
+html.js .reveal.on .pop,html.js .pop.on{transform:scale(1);opacity:1;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation:none!important;transition:none!important;}
+  .reveal,.pop{opacity:1!important;transform:none!important;}
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .bento{grid-template-columns:repeat(2,1fr);}
+  .b-2,.b-3,.b-4,.b-6{grid-column:span 2;}
+  .steps{grid-template-columns:1fr;}
+  .hero-grid{grid-template-columns:1fr;gap:36px;}
+}
+@media (max-width:640px){
+  .sec{padding:52px 0;}
+  .bento{grid-template-columns:1fr;}
+  .b-2,.b-3,.b-4,.b-6{grid-column:span 1;}
+  .nav-links{gap:14px;}
+  .nav a.nl{display:none;} /* mobile: liks tik CTA mygtukas */
+}

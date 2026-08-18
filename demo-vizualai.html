@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>SPOBU — vizualų DEMO (vidinis, ištrinti prieš deploy)</title>
+<link rel="icon" href="../brand/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#FF4D00">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.demo-note{background:rgba(255,77,0,.08);border:1px dashed rgba(255,77,0,.5);border-radius:12px;padding:10px 16px;font-size:13px;color:var(--ink2);margin:10px 0 26px;}
+.dt{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--mut);margin:44px 0 6px;}
+/* Imituotas screenshot — pilno ekrano appso UI telefono rėmelyje */
+.scr{display:flex;flex-direction:column;gap:10px;background:var(--d-bg);padding:16px 13px 20px;min-height:480px;position:relative;}
+.scr-top{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#888;font-weight:800;}
+.scr-hero{text-align:center;padding:6px 0 2px;}
+.scr-hero .kanji{font-size:44px;line-height:1;filter:drop-shadow(0 0 14px rgba(255,77,0,.5));}
+.scr-hero .nm{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:#F5F2ED;margin-top:4px;}
+.scr-hero .st{font-size:9.5px;font-weight:900;letter-spacing:1px;color:#FF7A33;}
+.scr .d-card{padding:11px 12px;border-radius:13px;}
+.scr .prog-row{font-size:10px;}
+.scr .prog{height:9px;}
+.badge-row{display:flex;gap:7px;justify-content:center;}
+.bd{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;background:radial-gradient(circle at 35% 30%,#FFE9A8,#FFD700 70%);box-shadow:0 0 12px rgba(255,215,0,.35);}
+.bd.off{background:#242424;box-shadow:none;opacity:.45;}
+.scr-nav{margin-top:auto;display:flex;justify-content:space-around;border-top:.5px solid rgba(255,255,255,.08);padding-top:9px;font-size:15px;}
+.scr-nav span{opacity:.45;}
+.scr-nav span.on{opacity:1;filter:drop-shadow(0 0 6px rgba(255,77,0,.6));}
+.shot-tag{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
+.shot-tag b{background:rgba(0,0,0,.55);color:#fff;font-size:10px;letter-spacing:1px;padding:5px 10px;border-radius:99px;border:1px dashed rgba(255,255,255,.4);}
+/* 3 telefonų juosta */
+.shots{display:flex;gap:22px;justify-content:center;align-items:flex-end;flex-wrap:wrap;}
+.shots .phone{width:230px;margin:0;}
+.shots .phone-scr{min-height:0;padding:0;}
+.shots .mid{transform:translateY(-14px) scale(1.06);z-index:2;}
+.shot-lbl{text-align:center;font-size:12.5px;font-weight:800;color:var(--ink2);margin-top:10px;}
+/* OG kortelė 1200x630 -> sumažinta */
+.og{width:600px;max-width:100%;aspect-ratio:1200/630;background:#171B22;border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:center;box-shadow:var(--shadow-lg);}
+.og-left{padding:34px 0 34px 38px;flex:1;z-index:2;}
+.og-logo{display:flex;align-items:center;gap:10px;}
+.og-logo img{width:40px;height:40px;border-radius:9px;}
+.og-logo span{font-family:'Bebas Neue',sans-serif;font-size:30px;color:#fff;letter-spacing:1px;}
+.og-tag{font-family:'Bebas Neue',sans-serif;font-size:29px;letter-spacing:1.5px;color:#fff;line-height:1.08;margin-top:12px;}
+.og-tag em{font-style:normal;color:#FF7A33;}
+.og-sub{font-size:11.5px;font-weight:800;letter-spacing:2px;color:#FF7A33;text-transform:uppercase;margin-top:10px;}
+.og-phone{width:170px;transform:rotate(8deg) translateY(26px);margin-right:26px;flex-shrink:0;}
+.og-phone .phone{width:100%;padding:7px;border-radius:26px;margin:0;}
+.og-phone .phone-scr{border-radius:20px;min-height:0;padding:0;}
+.og-glow{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,0,.35),transparent 65%);right:-60px;top:-80px;}
+/* Messenger peržiūra */
+.msgr{max-width:340px;background:#fff;border:1px solid var(--bdr);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);}
+.msgr .og{width:100%;border-radius:0;}
+.msgr-meta{padding:10px 14px;background:#F0F2F5;}
+.msgr-meta .u{font-size:10px;color:#65676B;text-transform:uppercase;}
+.msgr-meta .t{font-size:13.5px;font-weight:700;color:#050505;}
+.msgr-meta .d{font-size:12px;color:#65676B;}
+</style>
+</head>
+<body>
+
+<header class="wrap" style="padding:36px 20px 0;">
+  <span class="kicker">Vidinis demo — neviešinti</span>
+  <h1 class="h1" style="margin-top:8px;">KAIP ATRODYTŲ TIKRI VIZUALAI</h1>
+  <p class="demo-note">⚠️ Ekranai žemiau — <b>imitacija iš CSS</b> (vietoj jų stotų tikri appso PNG screenshot'ai). Tikslas — parodyti išdėstymą ir efektą prieš darant tikras nuotraukas.</p>
+</header>
+
+<!-- 1. HERO SU SCREENSHOT -->
+<section class="wrap">
+  <h2 class="dt">1 · Hero: vietoj kortelių — pilnas tikras ekranas</h2>
+  <p class="small" style="margin-bottom:18px;">Dabar hero telefone — 4 atskiros kortelės. Su tikru screenshot'u telefonas rodytų <b>vientisą appso ekraną</b> — su vaiko herojumi, navigacija ir gyvu turiniu. Iškart matosi, kad produktas tikras ir gyvas.</p>
+  <div class="hero-grid" style="align-items:center;">
+    <div>
+      <span class="kicker">Būk geresnis nei vakar</span>
+      <p class="h1" style="margin-top:10px;">KIEKVIENA TRENIRUOTĖ — <span class="accent">ŽINGSNIS</span> TAVO VAIKO SPORTO KELYJE</p>
+      <div class="hero-cta" style="margin-top:20px;">
+        <a class="btn btn-primary" href="#">Tėvams</a>
+        <a class="btn btn-primary" style="background:var(--ink);" href="#">Vaikams 🎮</a>
+        <a class="btn btn-outline" href="#">Klubams</a>
+      </div>
+    </div>
+    <div class="phone">
+      <div class="phone-scr scr">
+        <div class="phone-notch"></div>
+        <div class="scr-top"><span>◀ 9:41</span><span>🔔 3</span></div>
+        <div class="scr-hero">
+          <div class="kanji">⚔️</div>
+          <div class="nm">DOMAS · LVL 27</div>
+          <div class="st">EKSPERTAS · 8 450 EXP</div>
+        </div>
+        <div class="d-card">
+          <div class="prog-row"><span>Iki LVL 28</span><span class="d-mut">76%</span></div>
+          <div class="prog"><div class="prog-fill" style="width:76%"></div></div>
+        </div>
+        <div class="badge-row"><span class="bd">🥇</span><span class="bd">🥈</span><span class="bd">🥉</span><span class="bd off">🔒</span><span class="bd off">🔒</span></div>
+        <div class="d-card appr" style="gap:9px;"><span class="ok" style="width:26px;height:26px;font-size:12px;">✅</span><div style="font-size:11px;">Planka 2:40 — <b>patvirtinta!</b></div></div>
+        <div class="scr-nav"><span class="on">🏠</span><span>🥋</span><span>⚔️</span><span>🏅</span><span>👤</span></div>
+        <div class="shot-tag"><b>ČIA — TIKRAS SCREENSHOT</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. 3 EKRANŲ JUOSTA -->
+<section class="wrap">
+  <h2 class="dt">2 · Nauja sekcija „Pažvelk į vidų" — 3 ekranai</h2>
+  <p class="small" style="margin-bottom:26px;">Įsiterptų index puslapyje po video: trys ekranai (vidurinis iškeltas) — vaiko kelias, ženkliukai, tėvų portalas. Toks pat pattern'as kaip Spond/Duolingo.</p>
+  <div class="shots">
+    <div>
+      <div class="phone"><div class="phone-scr scr" style="min-height:360px;">
+        <div class="scr-hero" style="padding-top:14px;"><div class="kanji" style="font-size:30px;">🥇</div><div class="nm" style="font-size:15px;">ŽENKLIUKAI</div></div>
+        <div class="badge-row"><span class="bd">💪</span><span class="bd">🏃</span><span class="bd off">🔒</span></div>
+        <div class="badge-row"><span class="bd">🥋</span><span class="bd off">🔒</span><span class="bd">⚡</span></div>
+        <div class="d-card" style="text-align:center;font-size:10px;color:#888;">32 / 196 surinkta</div>
+        <div class="shot-tag"><b>SCREENSHOT #2</b></div>
+      </div></div>
+      <div class="shot-lbl">Ženkliukų kolekcija</div>
+    </div>
+    <div class="mid">
+      <div class="phone"><div class="phone-scr scr" style="min-height:390px;">
+        <div class="scr-hero" style="padding-top:14px;"><div class="kanji" style="font-size:34px;">⚔️</div><div class="nm" style="font-size:16px;">DOMAS · LVL 27</div><div class="st">EKSPERTAS</div></div>
+        <div class="d-card"><div class="prog-row"><span>Iki LVL 28</span><span class="d-mut">76%</span></div><div class="prog"><div class="prog-fill" style="width:76%"></div></div></div>
+        <div class="d-card"><div class="streak" style="gap:8px;"><span class="streak-fire" style="font-size:22px;">🔥</span><div><span class="num" style="font-size:20px;">14</span><div class="d-mut" style="font-size:9px;font-weight:800;">IŠ EILĖS</div></div></div></div>
+        <div class="shot-tag"><b>SCREENSHOT #1 — PAGRINDINIS</b></div>
+        <div class="scr-nav"><span class="on">🏠</span><span>🥋</span><span>⚔️</span><span>🏅</span><span>👤</span></div>
+      </div></div>
+      <div class="shot-lbl"><b>Vaiko sporto kelias</b></div>
+    </div>
+    <div>
+      <div class="phone"><div class="phone-scr scr" style="min-height:360px;">
+        <div class="scr-hero" style="padding-top:14px;"><div class="kanji" style="font-size:30px;">📊</div><div class="nm" style="font-size:15px;">TĖVŲ PORTALAS</div></div>
+        <div class="d-card" style="font-size:10.5px;">📋 Lankomumas: <b>11/12</b></div>
+        <div class="d-card" style="font-size:10.5px;">👥 Percentilis: <b>top 18 %</b></div>
+        <div class="d-card" style="font-size:10.5px;">🏅 Naujas rekordas šią sav.</div>
+        <div class="shot-tag"><b>SCREENSHOT #3</b></div>
+      </div></div>
+      <div class="shot-lbl">Ką mato tėvai</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. OG KORTELĖ -->
+<section class="wrap" style="padding-bottom:70px;">
+  <h2 class="dt">3 · og:image — kaip atrodys pasidalinus nuoroda</h2>
+  <p class="small" style="margin-bottom:20px;">Dabar dalinantis nuoroda Messenger/Facebook rodo pliką tekstą. Su og:image (1200×630 PNG) kiekvienas pasidalinimas tampa reklama. Kairėje — pati kortelė, dešinėje — kaip ji atrodys Messenger pokalbyje.</p>
+  <div style="display:flex;gap:34px;flex-wrap:wrap;align-items:flex-start;">
+    <div>
+      <div class="og">
+        <div class="og-glow"></div>
+        <div class="og-left">
+          <div class="og-logo"><img src="../brand/mark-orange-128.png" alt=""><span>SPOBU</span></div>
+          <div class="og-tag">KIEKVIENA TRENIRUOTĖ —<br><em>ŽINGSNIS</em> VAIKO SPORTO KELYJE</div>
+          <div class="og-sub">Būk geresnis nei vakar</div>
+        </div>
+        <div class="og-phone"><div class="phone"><div class="phone-scr scr" style="min-height:200px;gap:6px;padding:10px 8px;">
+          <div class="scr-hero" style="padding:2px 0;"><div class="kanji" style="font-size:22px;">⚔️</div><div class="nm" style="font-size:11px;">LVL 27</div></div>
+          <div class="d-card" style="padding:7px 8px;"><div class="prog"><div class="prog-fill" style="width:76%"></div></div></div>
+          <div class="badge-row"><span class="bd" style="width:26px;height:26px;font-size:12px;">🥇</span><span class="bd" style="width:26px;height:26px;font-size:12px;">🥈</span><span class="bd off" style="width:26px;height:26px;font-size:12px;">🔒</span></div>
+        </div></div></div>
+      </div>
+      <div class="shot-lbl">og-image.png (1200×630)</div>
+    </div>
+    <div>
+      <div class="msgr">
+        <div class="og" style="border-radius:0;">
+          <div class="og-glow"></div>
+          <div class="og-left" style="padding:20px 0 20px 22px;">
+            <div class="og-logo"><img src="../brand/mark-orange-128.png" alt="" style="width:24px;height:24px;"><span style="font-size:18px;">SPOBU</span></div>
+            <div class="og-tag" style="font-size:17px;margin-top:7px;">KIEKVIENA TRENIRUOTĖ —<br><em>ŽINGSNIS</em> VAIKO SPORTO KELYJE</div>
+            <div class="og-sub" style="font-size:8px;margin-top:6px;">Būk geresnis nei vakar</div>
+          </div>
+          <div class="og-phone" style="width:100px;margin-right:14px;"><div class="phone" style="padding:4px;border-radius:16px;"><div class="phone-scr scr" style="min-height:120px;gap:4px;padding:7px 5px;">
+            <div class="scr-hero" style="padding:0;"><div class="kanji" style="font-size:15px;">⚔️</div></div>
+            <div class="d-card" style="padding:5px;"><div class="prog" style="height:6px;"><div class="prog-fill" style="width:76%"></div></div></div>
+          </div></div></div>
+        </div>
+        <div class="msgr-meta">
+          <div class="u">elfuego-hub.github.io</div>
+          <div class="t">SPOBU — vaiko sporto kelias vienoje programėlėje</div>
+          <div class="d">Treniruotės virsta žaidimu: lygiai, ženkliukai ir komandų iššūkiai…</div>
+        </div>
+      </div>
+      <div class="shot-lbl">Kaip atrodys Messenger / Facebook</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
