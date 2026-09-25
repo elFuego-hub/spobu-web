@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -46,7 +46,7 @@
       <h3 class="h3"><span class="card-ico">💼</span> Kaip tai atrodo klubo portale</h3>
       <div class="dark d-pad" style="margin-top:12px;">
         <div class="d-ttl" style="color:#22C55E;">📊 KLUBO PULSAS ŠIANDIEN</div>
-        <p class="d-mut" style="font-size:13px;margin-top:6px;">Lankomumas pagal grupes, laukiančios tėvų anketos, aktyviausi vaikai ir trenerių veikla — visas klubas viename ekrane, be popierių ir excelių.</p>
+        <p class="d-mut" style="font-size:13px;margin-top:6px;">Kas reikalauja dėmesio (naujos tėvų anketos, nustoję lankyti vaikai, grupės be etapo), lankomumas, kalendorius ir trenerių aktyvumas — visas klubas viename ekrane, be popierių ir excelių.</p>
       </div>
       <p class="small" style="margin-top:10px;">Prisijungimo sąlygas aptariame individualiai — pirmieji klubai startuoja nemokamai.</p>
     </div>
@@ -63,23 +63,23 @@
     <div class="bento">
       <div class="card b-2 reveal">
         <h3 class="h3"><span class="card-ico">🔥</span> Išlaikote esamus narius</h3>
-        <p style="color:var(--ink2);">Vaikas, kuris renka EXP, ženkliukus ir streak'us, nenori praleisti treniruotės — o jo grupė laukia jo taškų komandos reitinge. Motyvuotas vaikas = išlaikytas narys ir ramesni tėvai.</p>
+        <p style="color:var(--ink2);">Vaikas, kuris renka EXP, ženkliukus ir serijas, nenori praleisti treniruotės — o jo grupė laukia jo taškų komandos reitinge. Motyvuotas vaikas = išlaikytas narys ir ramesni tėvai.</p>
       </div>
       <div class="card b-2 reveal">
         <h3 class="h3"><span class="card-ico">🧲</span> Pritraukiate naujus</h3>
-        <p style="color:var(--ink2);">Vaikai kviečia draugus dvikovoms, tėvai mato modernų klubą, kuris fiksuoja vaiko progresą, o ne tik renka mokestį. Skaitmeninis vaiko sporto kelias — argumentas, kurio kiti klubai dar neturi.</p>
+        <p style="color:var(--ink2);">Tėvai dalinasi vaiko medaliais ir diržais kortele su savo nuotrauka, mato modernų klubą, kuris fiksuoja vaiko progresą, o ne tik renka mokestį. Skaitmeninis vaiko sporto kelias — argumentas, kurio kiti klubai dar neturi.</p>
       </div>
       <div class="card b-2 reveal">
         <h3 class="h3"><span class="card-ico">📣</span> Klubo įvaizdis auga pats</h3>
-        <p style="color:var(--ink2);">Postų studija iš tikrų treniruočių duomenų per minutę paruošia gražų įrašą klubo socialiniams tinklams — po varžybų, diržų egzamino ar tiesiog geros savaitės. Tėvai dalinasi, bendruomenė mato gyvą klubą.</p>
+        <p style="color:var(--ink2);">Postų studija iš tikrų treniruočių duomenų per minutę paruošia gražų įrašą klubo socialiniams tinklams — po varžybų, diržų egzamino ar tiesiog geros savaitės. Treneris po treniruotės įkelia nuotrauką ar vaizdo įrašą su SPOBU rėmeliu. Vardai viešai — tik su tėvų sutikimu.</p>
       </div>
       <div class="card b-3 reveal">
         <h3 class="h3"><span class="card-ico">⏱️</span> Nulinė administracija</h3>
-        <p style="color:var(--ink2);">Jokių IT diegimų — programėlė veikia telefone ir naršyklėje. Treneriai gauna įrankius (tvirtinimas — keli paspaudimai), ne papildomą popierizmą. Paskyras sukuriame kartu per paleidimą.</p>
+        <p style="color:var(--ink2);">Jokių IT diegimų — programėlė veikia telefone ir naršyklėje. Mėnesio etapo treniruotės paruoštos iš anksto (treneris tik patvirtina ar pakoreguoja), Strava ir lankomumo iššūkius tvirtina sistema. Paskyras sukuriame kartu per paleidimą.</p>
       </div>
       <div class="card b-3 reveal">
         <h3 class="h3"><span class="card-ico">📊</span> Analitika ir komunikacija</h3>
-        <p style="color:var(--ink2);">Klubo valdymo portalas su statistika, reitingais ir pranešimais grupėms — tėvai ir vaikai gauna žinutes apie renginius, varžybas ir klubo naujienas tiesiai programėlėje.</p>
+        <p style="color:var(--ink2);">Klubo valdymo portalas su statistika, reitingais ir pranešimais — tėvai, vaikai ir treneriai gauna žinutes apie renginius, varžybas ir klubo naujienas programėlėje ir telefono pranešimais.</p>
       </div>
     </div>
   </div>
@@ -96,24 +96,27 @@
       <div class="card b-3 reveal">
         <h3 class="h3">🏢 Klubo administratoriui</h3>
         <ul class="check" style="margin-top:10px;">
-          <li><b>Analitika:</b> agreguota statistika, grupių reitingai, top būreliai pagal aktyvumą</li>
-          <li><b>Trenerių valdymas</b> su aktyvumo „šviesoforu" 🟢🟡🔴</li>
-          <li><b>Žinutės ir pranešimai grupėms</b> — tėvams ir vaikams tiesiai į programėlę</li>
+          <li><b>Analitika:</b> žmonės ir veikla, grupių reitingai, nustoję lankyti vaikai, paieška pagal vardą</li>
+          <li><b>Trenerių valdymas</b> su aktyvumo „šviesoforu" 🟢🟡🔴 ir pavadavimais</li>
+          <li><b>Kalendorius ir turinys:</b> visos klubo treniruotės, lankomumas su pastangomis, pastabos treneriams; mėnesio etapai iš SPOBU, klubo ir trenerių planų katalogo</li>
+          <li><b>Pranešimai visiems ar grupėms</b> — tėvams, vaikams ir treneriams, su pranešimu į telefoną</li>
           <li><b>Renginiai:</b> varžybos, diržų egzaminai, stovyklos su registracija (dalyvaus / ne)</li>
           <li><b>Bendri grupių iššūkiai</b> visam klubui — komanda prieš komandą</li>
           <li><b>Funkcijų valdymas</b> — patys sprendžiate, kas jūsų klube įjungta</li>
           <li><b>Postų studija</b> — įrašai klubo socialiniams tinklams iš tikrų treniruočių duomenų</li>
+          <li><b>Klubo informacija tėvams</b> — aprašymas, adresas, kontaktai, Facebook ir Instagram</li>
         </ul>
       </div>
       <div class="card b-3 reveal">
         <h3 class="h3">🧑‍🏫 Treneriams</h3>
         <ul class="check" style="margin-top:10px;">
           <li><b>Savas žaidybinis kelias</b> — 8 stadijos iki 🏔️ Sensėjaus, 99 lygiai</li>
-          <li><b>Rezultatų tvirtinimas</b> keliais paspaudimais po treniruotės</li>
-          <li><b>EXP skyrimas</b> už elgesį, pastangas, iššūkius ir varžybas</li>
-          <li><b>Lankomumo žymėjimas</b> su automatiniais EXP bonusais vaikams</li>
-          <li><b>Grupių valdymas</b> ir grupės iššūkių kūrimas</li>
-          <li><b>Vaikų progreso radaras</b> — iškart matosi, kuriam vaikui ko trūksta</li>
+          <li><b>Mėnesio etapas ir treniruočių planai</b> — treniruotė paruošta iš anksto, tu patvirtini ar pakoreguoji</li>
+          <li><b>Lankomumo ir pastangų žymėjimas</b> su automatiniais EXP vaikams</li>
+          <li><b>Rezultatų tvirtinimas</b> keliais paspaudimais — Strava ir lankomumo iššūkius patvirtina sistema</li>
+          <li><b>EXP skyrimas</b> už elgesį, pastangas, iššūkius ir varžybas; dvikovų rezultatus įvedi, taškus skaičiuoja sistema</li>
+          <li><b>Grupių valdymas</b>, tėvų anketų tvirtinimas į savo grupę ir grupės iššūkių kūrimas</li>
+          <li><b>Treniruočių papkė</b> — paruošti blokai ir Kyokushin žinios</li>
           <li><b>Realtime pranešimai</b> — naujas rezultatas laukia patvirtinimo</li>
         </ul>
       </div>

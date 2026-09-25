@@ -84,6 +84,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Nunito',sans-serif;font-
 .b-3{grid-column:span 3;}
 .b-4{grid-column:span 4;}
 .b-6{grid-column:span 6;}
+.vert-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px;}
 .card .h3{display:flex;align-items:center;gap:10px;}
 .card-ico{width:42px;height:42px;border-radius:var(--r-sm);background:rgba(255,77,0,.09);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
 
@@ -144,7 +145,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Nunito',sans-serif;font-
 
 /* Telefono rėmelis */
 .phone{width:min(320px,86vw);background:#0D0D0D;border-radius:44px;padding:11px;box-shadow:0 40px 80px rgba(26,26,26,.35),0 0 0 1px rgba(255,255,255,.06);margin:0 auto;}
-.phone-scr{background:var(--d-bg);border-radius:34px;overflow:hidden;min-height:420px;display:flex;flex-direction:column;gap:12px;padding:22px 16px;}
+.phone-scr{background:var(--d-bg);color:var(--d-txt);border-radius:34px;overflow:hidden;min-height:420px;display:flex;flex-direction:column;gap:12px;padding:22px 16px;}
 .phone-notch{width:110px;height:22px;background:#0D0D0D;border-radius:0 0 14px 14px;margin:-22px auto 0;}
 .phone .logo{color:var(--d-txt);font-size:18px;justify-content:center;display:flex;}
 .phone .logo .logo-ico{width:26px;height:26px;}
@@ -223,6 +224,7 @@ html.js .reveal.on .pop,html.js .pop.on{transform:scale(1);opacity:1;}
 @media (max-width:900px){
   .bento{grid-template-columns:repeat(2,1fr);}
   .b-2,.b-3,.b-4,.b-6{grid-column:span 2;}
+  .vert-grid{grid-template-columns:repeat(2,1fr);}
   .steps{grid-template-columns:1fr;}
   .hero-grid{grid-template-columns:1fr;gap:36px;}
 }
@@ -230,6 +232,7 @@ html.js .reveal.on .pop,html.js .pop.on{transform:scale(1);opacity:1;}
   .sec{padding:52px 0;}
   .bento{grid-template-columns:1fr;}
   .b-2,.b-3,.b-4,.b-6{grid-column:span 1;}
+  .vert-grid{grid-template-columns:1fr;}
   .nav-links{gap:14px;}
   .nav a.nl{display:none;} /* mobile: liks tik CTA mygtukas */
 }
